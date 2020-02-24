@@ -1,0 +1,52 @@
+/* // NOTE: the order of these styles DO matter */
+
+.DateRangePickerInput {
+  border-radius: 5px;
+}
+
+.DateInput {
+  width: calc(50% - 12px); /* 24px is width of DateRangePickerInput_arrow */
+  width: -moz-calc(50% - 12px);
+  width: -webkit-calc(50% - 12px);
+  width: -o-calc(50% - 12px);
+  background-color: transparent;
+}
+
+.DateInput_input {
+  padding-left: 20px;
+  text-align: center;
+  font-size: 19pt;
+  font-weight: normal;
+  background-color: transparent;
+}
+
+.DateInput_input__focused {
+  border-bottom-color: #037afb;
+}
+
+.DateRangePickerInput_arrow {
+  width: 24px;
+}
+
+.DayPickerKeyboardShortcuts_buttonReset {
+  display: none;
+}
+
+/* // Will edit selected date or the endpoints of a range of dates */
+/* .CalendarDay__selected {
+  background: dark-red;
+  color: white;
+} */
+
+/* // Will edit when hovered over. _span style also has this property */
+/* .CalendarDay__selected:hover {
+  background: orange;
+  color: white;
+} */
+
+/* // Will edit when the second date (end date) in a range of dates */
+/* // is not yet selected. Edits the dates between your mouse and said date */
+/* .CalendarDay__hovered_span:hover,
+.CalendarDay__hovered_span {
+  background: brown;
+} */

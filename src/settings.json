@@ -1,0 +1,32 @@
+{
+  "global": {
+    "available-locations": [
+      { "icon": "🌊", "name": "BOCA TP Atlântico", "id": "boca-atlantico" },
+      { "icon": "🌍", "name": "BOCA TP Nations", "id": "boca-nations" },
+      { "icon": "🐡", "name": "BOCA TP Oceanário", "id": "boca-oceanario" }
+    ]
+  },
+  "POSF": {
+    "feedback-session": "basic-costumer-sat",
+    "first-question-title": "How was your experience today?",
+    "first-question-options": [
+      { "icon": "🙂", "label": "", "value": 3 },
+      { "icon": "😐", "label": "", "value": 2 },
+      { "icon": "🙁", "label": "", "value": 1 }
+    ],
+    "second-question-title": "Where should we improve first?",
+    "second-question-options": [
+      { "icon": "⏱", "label": "Waiting Time", "value": "waiting-time" },
+      { "icon": "🥦", "label": "Vegan Options", "value": "vegan-options" },
+      { "icon": "⭐️", "label": "Service Quality", "value": "service-quality" },
+      { "icon": "🧴", "label": "Cleanliness", "value": "cleanliness" },
+      { "icon": "🍫", "label": "More Snacks", "value": "more-snacks" }
+    ],
+    "max-inactive-time-allowed": 25
+  },
+  "dashboard": {
+    "require-auth": false,
+    "require-admin": false,
+    "jwt-private-key": "1234"
+  }
+}
