@@ -1,6 +1,6 @@
 import http from "./httpService";
 
-const apiEndpoint = "";
+const apiEndpoint = "terminal";
 
 function post(item) {
   return http.post(apiEndpoint + "/", item);

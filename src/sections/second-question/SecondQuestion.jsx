@@ -8,9 +8,9 @@ import feedbackSession from "../../settings/feedback-session";
 
 import Feedback from "../Feedback";
 
-import Reloader from "../../components/reloader/Reloader";
+import Reloader from "../../components/Reloader";
 
-import Heading from "../../components/generic/Heading";
+import Heading from "../../components/Heading";
 import SecondQuestionThankYouSwitch from "./SecondQuestionThankYouSwitch";
 import SecondQuestionGrid from "./SecondQuestionGrid";
 

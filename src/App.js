@@ -3,7 +3,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router";
 
-import Err from "./components/error/Err";
+import Err from "./components/Err";
 import FinalThankYou from "./sections/final-thank-you/FinalThankYou";
 import SecondQuestion from "./sections/second-question/SecondQuestion";
 import FirstQuestion from "./sections/first-question/FirstQuestion";

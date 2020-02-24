@@ -7,7 +7,7 @@ import feedbackSession from "../../settings/feedback-session";
 import Feedback from "../Feedback";
 
 import Container from "react-bootstrap/Container";
-import Heading from "../../components/generic/Heading";
+import Heading from "../../components/Heading";
 
 import FirstQuestionGrid from "./FirstQuestionGrid";
 import FirstQuestionLocationDebug from "./FirstQuestionLocationDebug";

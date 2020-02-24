@@ -6,10 +6,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import Reloader from "../reloader/Reloader";
+import Reloader from "./Reloader";
 
-import Player from "../animation/Player";
-import animation from "../animation/files/floating-ninja.json";
+import Player from "./animation/Player";
+import animation from "./animation/files/floating-ninja.json";
 
 /* * */
 /* * * * */

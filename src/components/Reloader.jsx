@@ -9,9 +9,9 @@
 import React from "react";
 
 import lottie from "lottie-web";
-import reversedProgressBar from "../animation/files/reversed-progress-bar.json";
+import reversedProgressBar from "./animation/files/reversed-progress-bar.json";
 
-import settings from "../../settings/general";
+import settings from "../settings/general";
 
 /* * */
 /* * * * */
