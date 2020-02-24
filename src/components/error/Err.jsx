@@ -1,28 +1,24 @@
 /* * */
 /* IMPORTS */
 import React from "react";
-import Settings from "get-settings";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import Reloader from "../../../utils/Reloader";
+import Reloader from "../reloader/Reloader";
 
 import Player from "../animation/Player";
-import animation from "../../common/animation/files/floating-ninja.json";
+import animation from "../animation/files/floating-ninja.json";
 
 /* * */
 /* * * * */
-class UnexpectedError extends React.Component {
+export default class Err extends React.Component {
   /* * */
   /* PROPERTIES */
 
   // Store Location where POSF collection is taking place
   location = this.props.match.params.location;
-
-  // How much time of inactivity is allowed before app restart
-  maxInactiveTimeAllowed = Settings.get("POSF.max-inactive-time-allowed") / 3;
 
   /* * */
   /* */
@@ -33,10 +29,7 @@ class UnexpectedError extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Reloader
-          seconds={this.maxInactiveTimeAllowed}
-          path={"/POSF/" + this.location}
-        />
+        <Reloader speed={3} path={"/" + this.location} />
         <Container>
           <Row className="text-center my-3">
             <Col>
@@ -65,6 +58,3 @@ class UnexpectedError extends React.Component {
     );
   }
 }
-
-/* * */
-export default UnexpectedError;

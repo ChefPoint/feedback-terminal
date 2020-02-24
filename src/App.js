@@ -3,7 +3,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router";
 
-// import ErrorOccurred from "./components/sections/POSF/POSFError";
+import Err from "./components/error/Err";
 import FinalThankYou from "./sections/final-thank-you/FinalThankYou";
 import SecondQuestion from "./sections/second-question/SecondQuestion";
 import FirstQuestion from "./sections/first-question/FirstQuestion";
@@ -21,7 +21,7 @@ class App extends React.Component {
       <Switch>
         {/* IN STORE FEEDBACK */}
         {/* <Redirect exact from="/POSF/:location/answer" to="/POSF" /> */}
-        {/* <Route path="/:location/error" component={ErrorOccurred} /> */}
+        <Route path="/:location/error" component={Err} />
         <Route path="/:location/thank-you" component={FinalThankYou} />
         <Route path="/:location/second/:id" component={SecondQuestion} />
         <Route path="/:location" component={FirstQuestion} />

@@ -11,6 +11,8 @@ import React from "react";
 import lottie from "lottie-web";
 import reversedProgressBar from "../animation/files/reversed-progress-bar.json";
 
+import settings from "../../settings/general";
+
 /* * */
 /* * * * */
 export default class Reloader extends React.Component {
@@ -41,7 +43,8 @@ export default class Reloader extends React.Component {
     // Set Animation speed
     // Animation is 1 second by default,
     // so total duration is 1 divided by desired speed.
-    const desiredSpeed = this.props.seconds || 1;
+    const defaultSpeed = settings["max-inactive-seconds-allowed"];
+    const desiredSpeed = defaultSpeed / (this.props.speed || 1);
     this.animation.setSpeed(1 / desiredSpeed);
 
     // When animation ends perform desired operation
