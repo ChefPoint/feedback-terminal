@@ -6,10 +6,6 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 
-import settings from "get-settings";
-import file from "./settings.json";
-settings.set(file);
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
