@@ -1,12 +1,12 @@
 /* * */
 /* IMPORTS */
-import React from "react";
+import React from 'react';
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-import Player from "../../components/animation/Player";
-import animation from "../../components/animation/files/biking-is-cool.json";
+import Player from '../../components/animation/Player';
+import animation from '../../components/animation/files/biking-is-cool.json';
 
 /* * */
 /* * * * */
@@ -14,7 +14,7 @@ const ThankYouHeading4 = () => {
   return (
     <React.Fragment>
       <Player animationData={animation} height={200} />
-      <Row className="text-center my-5">
+      <Row className='text-center my-5'>
         <Col>
           <h1>Thank you so much for your answer!</h1>
           <br />
