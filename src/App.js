@@ -1,7 +1,7 @@
 /* * */
 /* IMPORTS */
 import React from 'react';
-import { Routes, Route, Redirect } from 'react-router';
+import { Routes, Route, Navigate } from 'react-router';
 
 import Err from './components/Err';
 import FinalThankYou from './sections/final-thank-you/FinalThankYou';
@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <Routes>
         {/* IN STORE FEEDBACK */}
-        {/* <Redirect exact from="/POSF/:location/answer" to="/POSF" /> */}
+        {/* <Navigate exact from="/POSF/:location/answer" to="/POSF" /> */}
         <Route path='/:location/error' component={Err} />
         <Route path='/:location/thank-you' component={FinalThankYou} />
         <Route path='/:location/second/:id' component={SecondQuestion} />
@@ -28,7 +28,7 @@ class App extends React.Component {
 
         {/* Set Location */}
         <Route path='/' component={SetLocation} />
-        <Redirect to='/' />
+        <Navigate to='/' />
       </Routes>
     );
   }
