@@ -1,9 +1,9 @@
 /* * */
 /* IMPORTS */
-import React from "react";
+import React from 'react';
 
-import Player from "../../components/animation/Player";
-import animation from "../../components/animation/files/loading-ring.json";
+import Player from '../../components/animation/Player';
+import animation from '../../components/animation/files/loading-ring.json';
 
 /* * */
 /* * * * */
@@ -19,7 +19,7 @@ export default class SecondQuestionCard extends React.Component {
   /* PROPERTIES */
 
   state = {
-    loading: false
+    loading: false,
   };
 
   /* * */
@@ -40,20 +40,15 @@ export default class SecondQuestionCard extends React.Component {
   // components to be rendered. No logic should be present.
   render() {
     return (
-      <div
-        className="display-card text-center crs-pointer sh-light grow animate p-3 my-3"
-        onClick={this.onClick}
-      >
+      <div className='display-card text-center crs-pointer sh-light grow animate p-3 my-3' onClick={this.onClick}>
         {!this.state.loading && (
           <React.Fragment>
-            <h1 style={{ fontSize: 80 }}>{this.props.option.icon}</h1>
+            <h1 style={{ fontSize: 60 }}>{this.props.option.icon}</h1>
             <h4 style={{ fontSize: 24 }}>{this.props.option.label}</h4>
           </React.Fragment>
         )}
 
-        {this.state.loading && (
-          <Player animationData={animation} height={200} />
-        )}
+        {this.state.loading && <Player animationData={animation} height={200} />}
       </div>
     );
   }

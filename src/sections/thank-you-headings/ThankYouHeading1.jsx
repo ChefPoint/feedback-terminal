@@ -14,10 +14,10 @@ const ThankYouHeading1 = () => {
   return (
     <React.Fragment>
       <Player animationData={animation} height={200} speed={0.6} loop={false} />
-      <Row className='text-center my-5'>
+      <Row className='text-center my-4'>
         <Col>
           <h2>We are sorry you feel this way.</h2>
-          <h1>Please tell us where to improve.</h1>
+          {/* <h1>Please tell us where to improve.</h1> */}
           <h4 className='mt-4'>
             You can always send us an email to <strong>support@chefpoint.pt</strong>
           </h4>

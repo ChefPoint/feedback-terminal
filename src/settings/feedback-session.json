@@ -14,7 +14,7 @@
     { "icon": "⭐️", "label": "Service Quality", "value": "service-quality" },
     { "icon": "🧴", "label": "Cleanliness", "value": "cleanliness" },
     { "icon": "🌮", "label": "Ethnic Foods", "value": "ethnic-foods" },
-    { "icon": "🍮", "label": "Desserts Options", "value": "desserts-options" },
+    { "icon": "🍮", "label": "More Desserts", "value": "more-desserts" },
     { "icon": "🍹", "label": "More Drinks", "value": "more-drinks" },
     { "icon": "🍝", "label": "Pasta", "value": "pasta" }
   ]

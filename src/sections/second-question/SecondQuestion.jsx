@@ -83,8 +83,8 @@ const SecondQuestion = () => {
       <Reloader path={'/' + location} />
       <Container>
         <SecondQuestionThankYouSwitch value={getPreviousAnswerValue()} />
-        <hr />
-        <Heading text={questionTitle} row='text-center my-5' h1={{ fontSize: 40, fontWeight: 700 }} />
+        {/* <hr /> */}
+        <Heading text={questionTitle} row='text-center my-2' h1={{ fontSize: 40, fontWeight: 700 }} />
         <SecondQuestionGrid onSelect={onSelect} />
       </Container>
     </React.Fragment>
