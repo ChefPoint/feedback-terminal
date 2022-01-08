@@ -1,13 +1,13 @@
 /* * */
 /* IMPORTS */
-import React from "react";
+import React from 'react';
 
-import feedbackSession from "../../settings/feedback-session";
+import feedbackSession from '../../settings/feedback-session';
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-import SecondQuestionCard from "./SecondQuestionCard";
+import SecondQuestionCard from './SecondQuestionCard';
 
 /* * */
 /* * * * */
@@ -23,14 +23,11 @@ class SecondQuestionGrid extends React.Component {
   // components to be rendered. No logic should be present.
   render() {
     return (
-      <Row className="text-center my-3">
-        {feedbackSession["second-question-options"].map(option => {
+      <Row className='text-center my-3'>
+        {feedbackSession['second-question-options'].map((option) => {
           return (
             <Col key={option.value} md={3}>
-              <SecondQuestionCard
-                option={option}
-                onClick={this.props.onSelect}
-              />
+              <SecondQuestionCard option={option} onClick={this.props.onSelect} />
             </Col>
           );
         })}

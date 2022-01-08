@@ -1,20 +1,20 @@
-import http from "./httpService";
+import http from './httpService';
 
-const apiEndpoint = "terminal";
+const apiEndpoint = 'terminal';
 
 function post(item) {
-  return http.post(apiEndpoint + "/", item);
+  return http.post(apiEndpoint + '/', item);
 }
 
-function put(id, item) {
-  return http.put(apiEndpoint + "/" + id, item);
+function put(item) {
+  return http.put(apiEndpoint, item);
 }
 
 function get(route, params) {
   return http.get(
-    apiEndpoint + "/" + route,
+    apiEndpoint + '/' + route,
     params && {
-      params: { params }
+      params: { params },
     }
   );
 }
@@ -22,5 +22,5 @@ function get(route, params) {
 export default {
   post,
   put,
-  get
+  get,
 };

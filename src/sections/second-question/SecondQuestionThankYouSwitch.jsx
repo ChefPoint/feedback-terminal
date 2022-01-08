@@ -1,13 +1,15 @@
 /* * */
 /* IMPORTS */
-import React from "react";
+import React from 'react';
 
-import Container from "react-bootstrap/Container";
+import Container from 'react-bootstrap/Container';
 
-import ThankYouHeading1 from "../thank-you-headings/ThankYouHeading1";
-import ThankYouHeading2 from "../thank-you-headings/ThankYouHeading2";
-import ThankYouHeading3 from "../thank-you-headings/ThankYouHeading3";
-import ThankYouHeading4 from "../thank-you-headings/ThankYouHeading4";
+import { useLocation } from 'react-router';
+
+import ThankYouHeading1 from '../thank-you-headings/ThankYouHeading1';
+import ThankYouHeading2 from '../thank-you-headings/ThankYouHeading2';
+import ThankYouHeading3 from '../thank-you-headings/ThankYouHeading3';
+import ThankYouHeading4 from '../thank-you-headings/ThankYouHeading4';
 
 /* * */
 /* * * * */
@@ -18,18 +20,22 @@ import ThankYouHeading4 from "../thank-you-headings/ThankYouHeading4";
 
 /* * */
 /* * * * */
-class SecondQuestionThankYouSwitch extends React.Component {
+const SecondQuestionThankYouSwitch = ({ value }) => {
   /* * */
   /* PROPERTIES */
 
   // Render the correct heading based on previous question
   // answer value, passed via props.
-  headings = {
+  const headings = {
     1: <ThankYouHeading1 />,
     2: <ThankYouHeading2 />,
     3: <ThankYouHeading3 />,
-    4: <ThankYouHeading4 />
+    4: <ThankYouHeading4 />,
   };
+
+  // console.log(useLocation());
+  console.log(value);
+  // const { value } = 1; //useLocation();
 
   /* * */
   /* */
@@ -37,10 +43,8 @@ class SecondQuestionThankYouSwitch extends React.Component {
   /* function: render */
   // This method should be pure, i.e. it should only return
   // components to be rendered. No logic should be present.
-  render() {
-    return <Container>{this.headings[this.props.value]}</Container>;
-  }
-}
+  return <Container>{headings[value]}</Container>;
+};
 
 /* * */
 export default SecondQuestionThankYouSwitch;

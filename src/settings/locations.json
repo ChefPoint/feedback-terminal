@@ -1,5 +1,5 @@
 [
-  { "icon": "🌊", "name": "BOCA TP Atlântico", "id": "boca-atlantico" },
-  { "icon": "🌍", "name": "BOCA TP Nations", "id": "boca-nations" },
-  { "icon": "🐡", "name": "BOCA TP Oceanário", "id": "boca-oceanario" }
+  { "icon": "🌊", "name": "TP Atlântico", "id": "tp-atlantico" },
+  { "icon": "🌍", "name": "TP Nations", "id": "tp-nations" },
+  { "icon": "🐡", "name": "TP Oceanário", "id": "tp-oceanario" }
 ]

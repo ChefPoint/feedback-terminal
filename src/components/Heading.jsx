@@ -1,9 +1,9 @@
 /* * */
 /* IMPORTS */
-import React from "react";
+import React from 'react';
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 /* * */
 /* * * * */
@@ -18,17 +18,15 @@ import Col from "react-bootstrap/Col";
 /* * * * */
 class Heading extends React.Component {
   defaults = {
-    row: "text-center my-5 py-5",
-    h1: { fontSize: 60, fontWeight: 700 }
+    row: 'text-center my-4 py-4',
+    h1: { fontSize: 60, fontWeight: 700 },
   };
 
   render() {
     return (
       <Row className={this.props.row || this.defaults.row}>
         <Col>
-          <h1 style={this.props.h1 || this.defaults.h1}>
-            {this.props.text || "Heading"}
-          </h1>
+          <h1 style={this.props.h1 || this.defaults.h1}>{this.props.text || 'Heading'}</h1>
         </Col>
       </Row>
     );
