@@ -34,7 +34,7 @@ const FinalThankYou = () => {
   // components to be rendered. No logic should be present.
   return (
     <React.Fragment>
-      <Player animationData={animation} loop={false} speed={0.8} height={200} onComplete={restartApp} />
+      <Player animationData={animation} loop={false} speed={1.2} height={200} onComplete={restartApp} />
       <Row className='text-center my-3'>
         <Col>
           <h2>Thank you for your help.</h2>

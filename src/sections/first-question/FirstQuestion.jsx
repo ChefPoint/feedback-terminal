@@ -30,9 +30,6 @@ const FirstQuestion = () => {
   /* * */
   /* PROPERTIES */
 
-  // Required property to identify the Feedback Collection Session
-  const session = feedbackSession['session-title'];
-
   // Store Location where feedback collection is taking place
   const { location } = useParams();
 
@@ -50,19 +47,25 @@ const FirstQuestion = () => {
   // to the next question page.
   const onSelect = async (answer) => {
     try {
-      // Try Setting & Saving Feedback Properties
-      const feedbackID = '123'; // await new Feedback().set('session', this.session).set('location', this.location).set('firstQuestionTitle', this.questionTitle).set('firstQuestionAnswer', answer).save();
+      // Create a new instance of Feedback
+      let feedbackItem = new Feedback();
+      feedbackItem.set('session', feedbackSession['session-title']);
+      feedbackItem.set('location', location);
+      feedbackItem.set('firstQuestionTitle', questionTitle);
+      feedbackItem.set('firstQuestionAnswer', answer);
+      await feedbackItem.save();
 
       // Send user to the next question
-      const path = '/' + location + '/second/' + feedbackID;
-      const query = '?PreviousAnswerValue=' + answer.value;
-      navigate(path + query);
+      const path = '/' + location + '/second/' + feedbackItem.get('id');
+      let urlParams = new URLSearchParams();
+      urlParams.set('PreviousAnswerValue', answer.value);
+      urlParams.set('id', feedbackItem.get('id'));
+      navigate(path + '?' + urlParams);
     } catch (err) {
       // If an error occurs
       // Log the error and send the user to a generic error page.
       console.log(err);
-      return window.location.replace('/' + location + '/second/q34');
-      // return window.location.replace('/' + this.location + '/error');
+      return window.location.replace('/' + this.location + '/error');
     }
   };
 

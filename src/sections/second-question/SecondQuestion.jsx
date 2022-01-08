@@ -46,11 +46,9 @@ const SecondQuestion = () => {
   // stores the key - value pairs in "params" and returns the
   // value answered in the First Question (FQAnswerValue).
   // This method is called from "SecondQuestionThankYouSwitch".
-  const getPreviousAnswerValue = () => {
-    const params = new URLSearchParams(search);
-    const value = params.get('PreviousAnswerValue');
-    return value;
-  };
+  const params = new URLSearchParams(search);
+  const previousAnswerValue = params.get('PreviousAnswerValue');
+  const feedbackID = params.get('id');
 
   /* function: onSelect */
   // This method is called via props when the user clicks on an option.
@@ -58,8 +56,16 @@ const SecondQuestion = () => {
   // to the final Thank You page.
   const onSelect = async (answer) => {
     try {
+      let feedbackItem = new Feedback();
+      feedbackItem.set('id', feedbackID);
+      feedbackItem.set('session', feedbackSession['session-title']);
+      feedbackItem.set('location', location);
+      feedbackItem.set('secondQuestionTitle', questionTitle);
+      feedbackItem.set('secondQuestionAnswer', answer);
+      await feedbackItem.save();
+
       // Try Setting & Saving POSFeedback Properties
-      // await new Feedback(this.props.match.params.id).set('secondQuestionTitle', this.questionTitle).set('secondQuestionAnswer', answer).save();
+      // await new Feedback(feedbackID).set('secondQuestionTitle', questionTitle).set('secondQuestionAnswer', answer).save();
 
       // Send user to the final Thank You page
       const path = '/' + location + '/thank-you';
@@ -68,7 +74,7 @@ const SecondQuestion = () => {
       // If an error occurs
       // Log the error and send the user to a generic error page.
       console.log(err);
-      // return window.location.replace("/" + this.location + "/error");
+      // return window.location.replace('/' + location + '/error');
     }
   };
 
@@ -82,7 +88,7 @@ const SecondQuestion = () => {
     <React.Fragment>
       <Reloader path={'/' + location} />
       <Container>
-        <SecondQuestionThankYouSwitch value={getPreviousAnswerValue()} />
+        <SecondQuestionThankYouSwitch value={previousAnswerValue} />
         {/* <hr /> */}
         <Heading text={questionTitle} row='text-center my-2' h1={{ fontSize: 40, fontWeight: 700 }} />
         <SecondQuestionGrid onSelect={onSelect} />
