@@ -1,4 +1,3 @@
 {
-  "reload-app-interval": 15000,
   "max-inactive-seconds-allowed": 20
 }
