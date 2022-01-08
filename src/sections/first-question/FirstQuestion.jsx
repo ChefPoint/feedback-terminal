@@ -80,7 +80,7 @@ const FirstQuestion = () => {
 
   return (
     <React.Fragment>
-      <Reloader hidden={false} speed={2} />
+      <Reloader hidden={true} speed={0.25} />
       <Container>
         <br /> <br /> <br />
         <Heading text={firstQuestionTitle} />
