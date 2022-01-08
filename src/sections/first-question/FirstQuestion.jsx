@@ -4,7 +4,7 @@ import React from 'react';
 
 import feedbackSession from '../../settings/feedback-session';
 
-import Feedback from '../Feedback';
+import http from '../../services/httpService';
 
 import { useParams, useNavigate } from 'react-router';
 
@@ -34,7 +34,7 @@ const FirstQuestion = () => {
   const { location } = useParams();
 
   // What is the actual question the costumer is answering to
-  const questionTitle = feedbackSession['first-question-title'];
+  const firstQuestionTitle = feedbackSession['first-question-title'];
 
   /* * */
   /* */
@@ -47,25 +47,30 @@ const FirstQuestion = () => {
   // to the next question page.
   const onSelect = async (answer) => {
     try {
-      // Create a new instance of Feedback
-      let feedbackItem = new Feedback();
-      feedbackItem.set('session', feedbackSession['session-title']);
-      feedbackItem.set('location', location);
-      feedbackItem.set('firstQuestionTitle', questionTitle);
-      feedbackItem.set('firstQuestionAnswer', answer);
-      await feedbackItem.save();
+      // Build the feedback object
+      const feedbackItem = {
+        session: feedbackSession['session-title'],
+        location: location,
+        firstQuestionTitle: firstQuestionTitle,
+        firstQuestionAnswerIcon: answer.icon,
+        firstQuestionAnswerLabel: answer.label,
+        firstQuestionAnswerValue: answer.value,
+      };
 
-      // Send user to the next question
-      const path = '/' + location + '/second/' + feedbackItem.get('id');
+      // POST the feedbackItem to the API
+      let response = await http.post('/', feedbackItem);
+
+      // If successful, send user to the next question
+
       let urlParams = new URLSearchParams();
-      urlParams.set('PreviousAnswerValue', answer.value);
-      urlParams.set('id', feedbackItem.get('id'));
-      navigate(path + '?' + urlParams);
+      urlParams.set('value', answer.value);
+      urlParams.set('id', response.data.id);
+      navigate('/' + location + '/second?' + urlParams);
     } catch (err) {
       // If an error occurs
       // Log the error and send the user to a generic error page.
       console.log(err);
-      return window.location.replace('/' + this.location + '/error');
+      navigate('/' + location + '/error');
     }
   };
 
@@ -75,7 +80,8 @@ const FirstQuestion = () => {
 
   return (
     <Container>
-      <Heading text={questionTitle} />
+      <br /> <br /> <br />
+      <Heading text={firstQuestionTitle} />
       <FirstQuestionGrid onSelect={onSelect} />
       <FirstQuestionLocationDebug location={location} />
     </Container>

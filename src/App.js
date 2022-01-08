@@ -19,16 +19,13 @@ class App extends React.Component {
   render() {
     return (
       <Routes>
-        {/* IN STORE FEEDBACK */}
-        {/* <Navigate exact from="/POSF/:location/answer" to="/POSF" /> */}
-        <Route path='/:location/error' element={<Err />} />
-        <Route path='/:location/thank-you' element={<FinalThankYou />} />
-        <Route path='/:location/second/:id' element={<SecondQuestion />} />
-        <Route path='/:location' element={<FirstQuestion />} />
-
         {/* Set Location */}
         <Route path='/' element={<SetLocation />} />
-        {/* <Navigate replace to='/' /> */}
+        {/* IN STORE FEEDBACK */}
+        <Route path='/:location' element={<FirstQuestion />} />
+        <Route path='/:location/second' element={<SecondQuestion />} />
+        <Route path='/:location/thank-you' element={<FinalThankYou />} />
+        <Route path='/:location/error' element={<Err />} />
       </Routes>
     );
   }

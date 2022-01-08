@@ -6,7 +6,7 @@ import Container from 'react-bootstrap/Container';
 
 import feedbackSession from '../../settings/feedback-session';
 
-import Feedback from '../Feedback';
+import http from '../../services/httpService';
 
 import Reloader from '../../components/Reloader';
 
@@ -39,16 +39,15 @@ const SecondQuestion = () => {
   const { search } = useLocation();
 
   // What is the actual question the costumer is answering to
-  const questionTitle = feedbackSession['second-question-title'];
+  const secondQuestionTitle = feedbackSession['second-question-title'];
 
   /* function: getPreviousAnswerValue */
   // This method parses the search portion of the URL (everything after the "?"),
   // stores the key - value pairs in "params" and returns the
   // value answered in the First Question (FQAnswerValue).
   // This method is called from "SecondQuestionThankYouSwitch".
-  const params = new URLSearchParams(search);
-  const previousAnswerValue = params.get('PreviousAnswerValue');
-  const feedbackID = params.get('id');
+  const urlParams = new URLSearchParams(search);
+  const firstAnswerValue = urlParams.get('value');
 
   /* function: onSelect */
   // This method is called via props when the user clicks on an option.
@@ -56,25 +55,26 @@ const SecondQuestion = () => {
   // to the final Thank You page.
   const onSelect = async (answer) => {
     try {
-      let feedbackItem = new Feedback();
-      feedbackItem.set('id', feedbackID);
-      feedbackItem.set('session', feedbackSession['session-title']);
-      feedbackItem.set('location', location);
-      feedbackItem.set('secondQuestionTitle', questionTitle);
-      feedbackItem.set('secondQuestionAnswer', answer);
-      await feedbackItem.save();
+      const feedbackItem = {
+        id: urlParams.get('id'),
+        session: feedbackSession['session-title'],
+        location: location,
+        secondQuestionTitle: secondQuestionTitle,
+        secondQuestionAnswerIcon: answer.icon,
+        secondQuestionAnswerLabel: answer.label,
+        secondQuestionAnswerValue: answer.value,
+      };
 
-      // Try Setting & Saving POSFeedback Properties
-      // await new Feedback(feedbackID).set('secondQuestionTitle', questionTitle).set('secondQuestionAnswer', answer).save();
+      // POST the feedbackItem to the API
+      await http.put('/', feedbackItem);
 
       // Send user to the final Thank You page
-      const path = '/' + location + '/thank-you';
-      navigate(path);
+      navigate('/' + location + '/thank-you');
     } catch (err) {
       // If an error occurs
       // Log the error and send the user to a generic error page.
       console.log(err);
-      // return window.location.replace('/' + location + '/error');
+      navigate('/' + location + '/error');
     }
   };
 
@@ -88,9 +88,8 @@ const SecondQuestion = () => {
     <React.Fragment>
       <Reloader path={'/' + location} />
       <Container>
-        <SecondQuestionThankYouSwitch value={previousAnswerValue} />
-        {/* <hr /> */}
-        <Heading text={questionTitle} row='text-center my-2' h1={{ fontSize: 40, fontWeight: 700 }} />
+        <SecondQuestionThankYouSwitch value={firstAnswerValue} />
+        <Heading text={secondQuestionTitle} row='text-center my-2' h1={{ fontSize: 40, fontWeight: 700 }} />
         <SecondQuestionGrid onSelect={onSelect} />
       </Container>
     </React.Fragment>

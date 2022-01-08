@@ -4,8 +4,6 @@ import React from 'react';
 
 import Container from 'react-bootstrap/Container';
 
-import { useLocation } from 'react-router';
-
 import ThankYouHeading1 from '../thank-you-headings/ThankYouHeading1';
 import ThankYouHeading2 from '../thank-you-headings/ThankYouHeading2';
 import ThankYouHeading3 from '../thank-you-headings/ThankYouHeading3';
@@ -32,10 +30,6 @@ const SecondQuestionThankYouSwitch = ({ value }) => {
     3: <ThankYouHeading3 />,
     4: <ThankYouHeading4 />,
   };
-
-  // console.log(useLocation());
-  console.log(value);
-  // const { value } = 1; //useLocation();
 
   /* * */
   /* */
