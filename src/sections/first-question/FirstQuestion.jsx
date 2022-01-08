@@ -2,6 +2,7 @@
 /* IMPORTS */
 import React from 'react';
 
+import general from '../../settings/general';
 import feedbackSession from '../../settings/feedback-session';
 
 import http from '../../services/httpService';
@@ -29,6 +30,8 @@ import FirstQuestionLocationDebug from './FirstQuestionLocationDebug';
 const FirstQuestion = () => {
   /* * */
   /* PROPERTIES */
+
+  setTimeout(() => window.location.reload(true), general['reload-app-interval']);
 
   // Store Location where feedback collection is taking place
   const { location } = useParams();
