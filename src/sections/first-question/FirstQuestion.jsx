@@ -3,7 +3,7 @@
 import React from 'react';
 
 import feedbackSession from '../../settings/feedback-session';
-
+import Reloader from '../../components/Reloader';
 import http from '../../services/httpService';
 
 import { useParams, useNavigate } from 'react-router';
@@ -29,8 +29,6 @@ import FirstQuestionLocationDebug from './FirstQuestionLocationDebug';
 const FirstQuestion = () => {
   /* * */
   /* PROPERTIES */
-
-  window.location.reload(true);
 
   // Store Location where feedback collection is taking place
   const { location } = useParams();
@@ -81,12 +79,15 @@ const FirstQuestion = () => {
   // components to be rendered. No logic should be present.
 
   return (
-    <Container>
-      <br /> <br /> <br />
-      <Heading text={firstQuestionTitle} />
-      <FirstQuestionGrid onSelect={onSelect} />
-      <FirstQuestionLocationDebug location={location} />
-    </Container>
+    <React.Fragment>
+      <Reloader hidden={false} speed={2} />
+      <Container>
+        <br /> <br /> <br />
+        <Heading text={firstQuestionTitle} />
+        <FirstQuestionGrid onSelect={onSelect} />
+        <FirstQuestionLocationDebug location={location} />
+      </Container>
+    </React.Fragment>
   );
 };
 
