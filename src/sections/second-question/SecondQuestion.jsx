@@ -4,8 +4,6 @@ import React from 'react';
 
 import Container from 'react-bootstrap/Container';
 
-import feedbackSession from '../../settings/feedback-session';
-
 import http from '../../services/httpService';
 
 import Reloader from '../../components/Reloader';
@@ -28,7 +26,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 /* * */
 /* * * * */
-const SecondQuestion = () => {
+const SecondQuestion = ({ options }) => {
   /* * */
   /* PROPERTIES */
 
@@ -37,9 +35,6 @@ const SecondQuestion = () => {
   // Store Location where POSF collection is taking place
   const { location } = useParams();
   const { search } = useLocation();
-
-  // What is the actual question the costumer is answering to
-  const secondQuestionTitle = feedbackSession['second-question-title'];
 
   /* function: getPreviousAnswerValue */
   // This method parses the search portion of the URL (everything after the "?"),
@@ -57,9 +52,8 @@ const SecondQuestion = () => {
     try {
       const feedbackItem = {
         id: urlParams.get('id'),
-        session: feedbackSession['session-title'],
         location: location,
-        secondQuestionTitle: secondQuestionTitle,
+        secondQuestionTitle: options.secondQuestionTitle,
         secondQuestionAnswerIcon: answer.icon,
         secondQuestionAnswerLabel: answer.label,
         secondQuestionAnswerValue: answer.value,
@@ -89,8 +83,8 @@ const SecondQuestion = () => {
       <Reloader path={'/' + location} />
       <Container>
         <SecondQuestionThankYouSwitch value={firstAnswerValue} />
-        <Heading text={secondQuestionTitle} row='text-center my-2' h1={{ fontSize: 40, fontWeight: 700 }} />
-        <SecondQuestionGrid onSelect={onSelect} />
+        <Heading text={options.secondQuestionTitle} row='text-center my-2' h1={{ fontSize: 40, fontWeight: 700 }} />
+        <SecondQuestionGrid items={options.secondQuestionOptions} onSelect={onSelect} />
       </Container>
     </React.Fragment>
   );
