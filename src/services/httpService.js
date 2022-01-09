@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://chefpoint-feedback-api.herokuapp.com/';
-// axios.defaults.baseURL = 'http://localhost:3500/';
+// axios.defaults.baseURL = 'https://chefpoint-feedback-api.herokuapp.com/';
+axios.defaults.baseURL = 'http://localhost:3500/';
 
 axios.interceptors.response.use(null, (error) => {
   const expectedError = error.response && error.response.status >= 400 && error.response.status < 500;

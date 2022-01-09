@@ -1,13 +1,11 @@
 /* * */
 /* IMPORTS */
-import React from "react";
+import React from 'react';
 
-import feedbackSession from "../../settings/feedback-session";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-
-import FirstQuestionCard from "./FirstQuestionCard";
+import FirstQuestionCard from './FirstQuestionCard';
 
 /* * */
 /* * * * */
@@ -17,27 +15,23 @@ import FirstQuestionCard from "./FirstQuestionCard";
 
 /* * */
 /* * * * */
-class FirstQuestionGrid extends React.Component {
+const FirstQuestionGrid = ({ items, onSelect }) => {
   /* function: render */
   // This method should be pure, i.e. it should only return
   // components to be rendered. No logic should be present.
-  render() {
-    return (
-      <Row className="text-center my-3">
-        {feedbackSession["first-question-options"].map(option => {
-          return (
-            <Col key={option.value}>
-              <FirstQuestionCard
-                option={option}
-                onClick={this.props.onSelect}
-              />
-            </Col>
-          );
-        })}
-      </Row>
-    );
-  }
-}
+
+  return (
+    <Row className='text-center my-3'>
+      {items.map((option) => {
+        return (
+          <Col key={option.value}>
+            <FirstQuestionCard option={option} onClick={onSelect} />
+          </Col>
+        );
+      })}
+    </Row>
+  );
+};
 
 /* * */
 export default FirstQuestionGrid;
