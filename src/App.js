@@ -19,7 +19,6 @@ import './styles/animate.css';
 import './styles/grow.css';
 
 const App = () => {
-  const [session, setSession] = useState(null);
   const [options, setOptions] = useState(null);
 
   useEffect(() => {
@@ -35,7 +34,7 @@ const App = () => {
       {/* Set Location */}
       <Route path='/' element={<SetLocation />} />
       {/* IN STORE FEEDBACK */}
-      <Route path='/:location' element={<FirstQuestion session={session} options={options} />} />
+      <Route path='/:location' element={<FirstQuestion options={options} />} />
       <Route path='/:location/second' element={<SecondQuestion options={options} />} />
       <Route path='/:location/thank-you' element={<FinalThankYou />} />
       <Route path='/:location/error' element={<Err />} />
