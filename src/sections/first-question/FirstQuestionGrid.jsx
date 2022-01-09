@@ -2,8 +2,6 @@
 /* IMPORTS */
 import React from 'react';
 
-import feedbackSession from '../../settings/feedback-session';
-
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
