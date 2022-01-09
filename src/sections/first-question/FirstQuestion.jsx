@@ -6,7 +6,7 @@ import Reloader from '../../components/Reloader';
 import http from '../../services/httpService';
 
 import { useParams, useNavigate } from 'react-router';
-import animation from '../../components/animation/files/loading-ring.json';
+import animation from '../../components/animation/files/loading-dots.json';
 
 import Container from 'react-bootstrap/Container';
 import Heading from '../../components/Heading';
@@ -74,10 +74,10 @@ const FirstQuestion = ({ options }) => {
 
   return (
     <React.Fragment>
-      {!options && <Player animationData={animation} height={200} />}
+      {!options && <Player animationData={animation} height={800} />}
       {options && (
         <React.Fragment>
-          <Reloader hidden={true} speed={2} />
+          <Reloader hidden={true} speed={0.25} />
           <Container>
             <br /> <br /> <br />
             <Heading text={options.firstQuestionTitle} />
