@@ -51,7 +51,6 @@ const SecondQuestion = ({ options }) => {
   const onSelect = async (answer) => {
     try {
       const feedbackItem = {
-        id: urlParams.get('id'),
         location: location,
         secondQuestionTitle: options.secondQuestionTitle,
         secondQuestionAnswerIcon: answer.icon,
@@ -60,7 +59,7 @@ const SecondQuestion = ({ options }) => {
       };
 
       // POST the feedbackItem to the API
-      await http.put('/', feedbackItem);
+      await http.put('/' + urlParams.get('id'), feedbackItem);
 
       // Send user to the final Thank You page
       navigate('/' + location + '/thank-you');
