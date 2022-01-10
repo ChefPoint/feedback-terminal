@@ -82,7 +82,6 @@ const SecondQuestion = ({ options }) => {
       <Reloader path={'/' + location} />
       <Container>
         <SecondQuestionThankYouSwitch value={firstAnswerValue} />
-        {firstAnswerValue > 2 && <Heading text={'Your satisfaction is our motivation.'} row='text-center my-2' h1={{ fontSize: 60, fontWeight: 700, color: '#eb5e00' }} />}
         {firstAnswerValue < 3 && (
           <React.Fragment>
             <Heading text={options.secondQuestionTitle} row='text-center my-2' h1={{ fontSize: 40, fontWeight: 700 }} />

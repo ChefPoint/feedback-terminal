@@ -6,14 +6,14 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import Player from '../../components/animation/Player';
-import animation from '../../components/animation/files/bench.json';
+import animation from '../../components/animation/files/retro-bike.json';
 
 /* * */
 /* * * * */
 const ThankYouHeading1 = () => {
   return (
     <React.Fragment>
-      <Player animationData={animation} height={200} speed={0.6} loop={false} />
+      <Player animationData={animation} height={200} />
       <Row className='text-center my-4'>
         <Col>
           <h2>We are sorry you feel this way.</h2>
