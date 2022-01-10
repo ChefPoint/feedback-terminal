@@ -82,8 +82,12 @@ const SecondQuestion = ({ options }) => {
       <Reloader path={'/' + location} />
       <Container>
         <SecondQuestionThankYouSwitch value={firstAnswerValue} />
-        <Heading text={options.secondQuestionTitle} row='text-center my-2' h1={{ fontSize: 40, fontWeight: 700 }} />
-        <SecondQuestionGrid items={options.secondQuestionOptions} onSelect={onSelect} />
+        {firstAnswerValue < 3 && (
+          <React.Fragment>
+            <Heading text={options.secondQuestionTitle} row='text-center my-2' h1={{ fontSize: 40, fontWeight: 700 }} />
+            <SecondQuestionGrid items={options.secondQuestionOptions} onSelect={onSelect} />
+          </React.Fragment>
+        )}
       </Container>
     </React.Fragment>
   );
