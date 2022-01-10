@@ -8,7 +8,7 @@ import Col from 'react-bootstrap/Col';
 
 import Reloader from './Reloader';
 
-import { useParams, Navigate } from 'react-router';
+import { useParams, Navigate } from 'react-router-dom';
 
 import Player from './animation/Player';
 import animation from './animation/files/floating-ninja.json';

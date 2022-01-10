@@ -2,7 +2,7 @@
 /* IMPORTS */
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router';
+import { Routes, Route } from 'react-router-dom';
 
 import Err from './components/Err';
 import FinalThankYou from './sections/final-thank-you/FinalThankYou';
