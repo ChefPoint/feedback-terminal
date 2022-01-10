@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import Player from '../../components/animation/Player';
-import animation from '../../components/animation/files/biking-is-cool.json';
+import animation from '../../components/animation/files/happy-dog.json';
 import Heading from '../../components/Heading';
 
 /* * */
