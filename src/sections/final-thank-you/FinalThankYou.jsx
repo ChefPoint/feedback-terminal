@@ -2,12 +2,13 @@
 /* IMPORTS */
 import React from 'react';
 
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
 import Player from '../../components/animation/Player';
 import animation from '../../components/animation/files/done.json';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
+
+import Wrapper from '../../components/Wrapper';
+import Spacer from '../../components/Spacer';
+import Text from '../../components/Text';
 
 /* * */
 /* * * * */
@@ -33,16 +34,12 @@ const FinalThankYou = () => {
   // This method should be pure, i.e. it should only return
   // components to be rendered. No logic should be present.
   return (
-    <React.Fragment>
+    <Wrapper>
       <Player animationData={animation} loop={false} speed={1.2} height={200} onComplete={restartApp} />
-      <Row className='text-center my-3'>
-        <Col>
-          <h2>Thank you for your help.</h2>
-          <br />
-          <h3>Your answer has been recorded, and we will review it shortly.</h3>
-        </Col>
-      </Row>
-    </React.Fragment>
+      <Text mods={{ fontSize: 40 }}>Thank you for your help.</Text>
+      <Spacer height={50} />
+      <Text mods={{ fontSize: 30 }}>Your answer has been recorded, and we will review it shortly.</Text>
+    </Wrapper>
   );
 };
 

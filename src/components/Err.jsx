@@ -2,16 +2,13 @@
 /* IMPORTS */
 import React from 'react';
 
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-
 import Reloader from './Reloader';
 
 import { useParams, Navigate } from 'react-router-dom';
 
 import Player from './animation/Player';
 import animation from './animation/files/floating-ninja.json';
+import Wrapper from './Wrapper';
 
 /* * */
 /* * * * */
@@ -35,24 +32,16 @@ const Err = () => {
   return (
     <React.Fragment>
       <Reloader speed={3} path={'/' + location} />
-      <Container>
-        <Row className='text-center my-3'>
-          <Col>
-            <Player animationData={animation} speed={0.8} height={200} onComplete={restartApp} />
-          </Col>
-        </Row>
-        <Row className='text-center my-3'>
-          <Col>
-            <h1>An unexpected error occurred.</h1>
-            <br />
-            <h2>Please try again.</h2>
-            <br />
-            <h4>
-              If the error persists please inform the shop or send an email to <strong>support@chefpoint.pt</strong>
-            </h4>
-          </Col>
-        </Row>
-      </Container>
+      <Wrapper>
+        <Player animationData={animation} speed={0.8} height={200} onComplete={restartApp} />
+        <h1>An unexpected error occurred.</h1>
+        <br />
+        <h2>Please try again.</h2>
+        <br />
+        <h4>
+          If the error persists please inform the shop or send an email to <strong>support@chefpoint.pt</strong>
+        </h4>
+      </Wrapper>
     </React.Fragment>
   );
 };

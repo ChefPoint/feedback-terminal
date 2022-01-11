@@ -1,4 +1,9 @@
 /* * */
+/* * * * * */
+/* FIRST QUESTION */
+/* * */
+
+/* * */
 /* IMPORTS */
 import React from 'react';
 
@@ -8,12 +13,13 @@ import http from '../../services/httpService';
 import { useParams, useNavigate } from 'react-router';
 import animation from '../../components/animation/files/loading-dots.json';
 
-import Container from 'react-bootstrap/Container';
-import Heading from '../../components/Heading';
+import Text from '../../components/Text';
+import Grid from '../../components/Grid';
 
-import FirstQuestionGrid from './FirstQuestionGrid';
-import FirstQuestionLocationDebug from './FirstQuestionLocationDebug';
+import LocationDebug from '../set-location/LocationDebug';
 import Player from '../../components/animation/Player';
+import Wrapper from '../../components/Wrapper';
+import Spacer from '../../components/Spacer';
 
 /* * */
 /* * * * */
@@ -27,7 +33,7 @@ import Player from '../../components/animation/Player';
 
 /* * */
 /* * * * */
-const FirstQuestion = ({ options }) => {
+const FirstQuestion = ({ options, session, setSession }) => {
   /* * */
   /* PROPERTIES */
 
@@ -59,6 +65,7 @@ const FirstQuestion = ({ options }) => {
       let urlParams = new URLSearchParams();
       urlParams.set('value', answer.value);
       urlParams.set('id', response.data.id);
+      setSession({ answer: answer, id: response.data.id });
       navigate('/' + location + '/second?' + urlParams);
     } catch (err) {
       // If an error occurs
@@ -78,12 +85,13 @@ const FirstQuestion = ({ options }) => {
       {options && (
         <React.Fragment>
           <Reloader hidden={true} speed={0.25} />
-          <Container>
-            <br /> <br /> <br />
-            <Heading text={options.firstQuestionTitle} />
-            <FirstQuestionGrid items={options.firstQuestionOptions} onSelect={onSelect} />
-            <FirstQuestionLocationDebug location={location} />
-          </Container>
+          <Wrapper>
+            <Spacer height={120} />
+            <Text mods={{ fontSize: 60 }}>{options.firstQuestionTitle}</Text>
+            <Spacer height={80} />
+            <Grid items={options.firstQuestionOptions} mods={{ idkey: 'value' }} callback={onSelect} />
+            <LocationDebug location={location} />
+          </Wrapper>
         </React.Fragment>
       )}
     </React.Fragment>
