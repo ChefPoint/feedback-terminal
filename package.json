@@ -1,7 +1,26 @@
 {
   "name": "chefpoint-feedback-terminal",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "CHEF POINT Feedback Terminal, built on Node.js, React and Google Sheets",
+  "author": "João de Vasconcelos",
+  "license": "MIT",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ChefPoint/feedback-terminal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ChefPoint/feedback-terminal/issues"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "engines": {
+    "node": "16.13.2"
+  },
   "dependencies": {
     "axios": "^0.24.0",
     "core-util-is": "^1.0.3",
@@ -10,12 +29,6 @@
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
