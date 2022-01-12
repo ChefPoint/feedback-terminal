@@ -3,16 +3,15 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import http from '../../services/httpService';
+import http from '../services/httpService';
 
-import Reloader from '../../components/Reloader';
+import Reloader from '../components/Reloader';
 
-import Player from '../../components/animation/Player';
-
-import Wrapper from '../../components/Wrapper';
-import Spacer from '../../components/Spacer';
-import Text from '../../components/Text';
-import Grid from '../../components/Grid';
+import Wrapper from '../components/Wrapper';
+import Spacer from '../components/Spacer';
+import Text from '../components/Text';
+import Grid from '../components/Grid';
+import Header from '../components/Header';
 
 /* * */
 /* * * * */
@@ -77,12 +76,9 @@ const SecondQuestion = ({ options, session, setSession }) => {
   // components to be rendered. No logic should be present.
   return (
     <React.Fragment>
-      <Reloader path={'/' + location} />
+      <Reloader path={'/' + location} speed={session.answer.shouldFollowUp ? 1 : 5} hidden={!session.answer.shouldFollowUp} />
       <Wrapper>
-        <Player animationData={session.answer.animation} height={200} />
-        <Text mods={{ fontSize: 30 }}>{session.answer.thankYouTitle}</Text>
-        <Spacer height={20} />
-        <Text mods={{ fontSize: 20 }}>{session.answer.thankYouText}</Text>
+        <Header animation={session.answer.animation} title={session.answer.thankYouTitle} subtitle={session.answer.thankYouText} />
         <Spacer height={50} />
         {session.answer.shouldFollowUp && (
           <React.Fragment>
@@ -96,4 +92,5 @@ const SecondQuestion = ({ options, session, setSession }) => {
   );
 };
 
+/* * */
 export default SecondQuestion;

@@ -9,7 +9,7 @@ import React from 'react';
 import Card from './Card';
 
 /* * */
-/* Grid */
+/* GRID */
 /* This component produces a grid of cards based on provided items. */
 const Grid = ({ items, callback, mods = {} }) => {
   //

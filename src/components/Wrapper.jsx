@@ -8,7 +8,7 @@
 import React from 'react';
 
 /* * */
-/* Wrapper */
+/* WRAPPER */
 /* This component draws a card with an ID, an Icon, a Label and a callback */
 /* hook that is called when it is clicked. Card requires an object ‹params› */
 /* with at least an id, an icon and a label, as well as a callback function */

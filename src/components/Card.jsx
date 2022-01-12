@@ -7,11 +7,11 @@
 /* IMPORTS */
 import React, { useState } from 'react';
 
-import Player from './animation/Player';
-import animation from './animation/files/loading-ring.json';
+import Player from './Player';
+import animation from '../media/animations/loading-ring.json';
 
 /* * */
-/* Card */
+/* CARD */
 /* This component draws a card with an ID, an Icon, a Label and a callback */
 /* hook that is called when it is clicked. Card requires an object ‹params› */
 /* with at least an id, an icon and a label, as well as a callback function */

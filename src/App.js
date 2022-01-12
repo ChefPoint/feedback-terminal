@@ -5,23 +5,22 @@
 
 /* * */
 /* IMPORTS */
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import http from './services/httpService';
 
-import SetLocation from './sections/set-location/SetLocation';
-import FirstQuestion from './sections/first-question/FirstQuestion';
-import SecondQuestion from './sections/second-question/SecondQuestion';
-import FinalThankYou from './sections/final-thank-you/FinalThankYou';
+import Loading from './components/Loading';
+import SetLocation from './sections/SetLocation';
+import FirstQuestion from './sections/FirstQuestion';
+import SecondQuestion from './sections/SecondQuestion';
+import FinalThankYou from './sections/FinalThankYou';
 import Err from './components/Err';
 
 import './App.css';
-import './styles/elements.css';
 
 /* * */
 /* APP */
-/* This function starts the app. */
+/* This component starts the app. */
 /* It is responsible for fetching options and setting the routes. */
 const App = () => {
   //
@@ -46,17 +45,23 @@ const App = () => {
   const [session, setSession] = useState(null);
 
   /* * Render
-   * Include the routes for this app and pass on the corresponding
+   * Show the loading screen if options are not yet retrieved from the API.
+   * When they are, include the routes for this app and pass on the corresponding
    * components, as well as the options fetched earlier.
    */
   return (
-    <Routes>
-      <Route path='/' element={<SetLocation />} />
-      <Route path='/:location' element={<FirstQuestion options={options} session={session} setSession={setSession} />} />
-      <Route path='/:location/second' element={<SecondQuestion options={options} session={session} setSession={setSession} />} />
-      <Route path='/:location/thank-you' element={<FinalThankYou />} />
-      <Route path='/:location/error' element={<Err />} />
-    </Routes>
+    <React.Fragment>
+      {!options && <Loading />}
+      {options && (
+        <Routes>
+          <Route path='/' element={<SetLocation />} />
+          <Route path='/:location' element={<FirstQuestion options={options} session={session} setSession={setSession} />} />
+          <Route path='/:location/second' element={<SecondQuestion options={options} session={session} setSession={setSession} />} />
+          <Route path='/:location/thank-you' element={<FinalThankYou />} />
+          <Route path='/:location/*' element={<Err />} />
+        </Routes>
+      )}
+    </React.Fragment>
   );
 };
 
