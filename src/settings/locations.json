@@ -1,5 +1,5 @@
 [
-  { "icon": "🌊", "name": "TP Atlântico", "id": "tp-atlantico" },
-  { "icon": "🌍", "name": "TP Nations", "id": "tp-nations" },
-  { "icon": "🐡", "name": "TP Oceanário", "id": "tp-oceanario" }
+  { "icon": "🌊", "label": "TP Atlântico", "id": "tp-atlantico" },
+  { "icon": "🌍", "label": "TP Nations", "id": "tp-nations" },
+  { "icon": "🐡", "label": "TP Oceanário", "id": "tp-oceanario" }
 ]

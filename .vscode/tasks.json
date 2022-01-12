@@ -2,11 +2,18 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Start App Locally",
+      "detail": "Start the app with 'npm start'.",
       "type": "npm",
       "script": "start",
-      "problemMatcher": [],
-      "label": "npm: start",
-      "detail": "react-scripts start"
+      "problemMatcher": []
+    },
+    {
+      "label": "Install Packages",
+      "detail": "Installs dependencies with 'npm install'.",
+      "type": "npm",
+      "script": "install",
+      "problemMatcher": []
     }
   ]
 }

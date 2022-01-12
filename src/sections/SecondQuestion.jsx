@@ -1,17 +1,17 @@
 /* * */
 /* IMPORTS */
 import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
-import Container from 'react-bootstrap/Container';
+import http from '../services/httpService';
 
-import http from '../../services/httpService';
+import Reloader from '../components/Reloader';
 
-import Reloader from '../../components/Reloader';
-
-import Heading from '../../components/Heading';
-import SecondQuestionThankYouSwitch from './SecondQuestionThankYouSwitch';
-import SecondQuestionGrid from './SecondQuestionGrid';
-import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import Wrapper from '../components/Wrapper';
+import Spacer from '../components/Spacer';
+import Text from '../components/Text';
+import Grid from '../components/Grid';
+import Header from '../components/Header';
 
 /* * */
 /* * * * */
@@ -26,7 +26,7 @@ import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 /* * */
 /* * * * */
-const SecondQuestion = ({ options }) => {
+const SecondQuestion = ({ options, session, setSession }) => {
   /* * */
   /* PROPERTIES */
 
@@ -34,15 +34,12 @@ const SecondQuestion = ({ options }) => {
 
   // Store Location where POSF collection is taking place
   const { location } = useParams();
-  const { search } = useLocation();
 
   /* function: getPreviousAnswerValue */
   // This method parses the search portion of the URL (everything after the "?"),
   // stores the key - value pairs in "params" and returns the
   // value answered in the First Question (FQAnswerValue).
   // This method is called from "SecondQuestionThankYouSwitch".
-  const urlParams = new URLSearchParams(search);
-  const firstAnswerValue = urlParams.get('value');
 
   /* function: onSelect */
   // This method is called via props when the user clicks on an option.
@@ -59,7 +56,7 @@ const SecondQuestion = ({ options }) => {
       };
 
       // POST the feedbackItem to the API
-      await http.put('/' + urlParams.get('id'), feedbackItem);
+      await http.put('/' + session.id, feedbackItem);
 
       // Send user to the final Thank You page
       navigate('/' + location + '/thank-you');
@@ -79,18 +76,21 @@ const SecondQuestion = ({ options }) => {
   // components to be rendered. No logic should be present.
   return (
     <React.Fragment>
-      <Reloader path={'/' + location} />
-      <Container>
-        <SecondQuestionThankYouSwitch value={firstAnswerValue} />
-        {firstAnswerValue < 3 && (
+      <Reloader path={'/' + location} speed={session.answer.shouldFollowUp ? 1 : 5} hidden={!session.answer.shouldFollowUp} />
+      <Wrapper>
+        <Header animation={session.answer.animation} title={session.answer.thankYouTitle} subtitle={session.answer.thankYouText} />
+        <Spacer height={50} />
+        {session.answer.shouldFollowUp && (
           <React.Fragment>
-            <Heading text={options.secondQuestionTitle} row='text-center my-2' h1={{ fontSize: 40, fontWeight: 700 }} />
-            <SecondQuestionGrid items={options.secondQuestionOptions} onSelect={onSelect} />
+            <Text mods={{ fontSize: 40, fontWeight: 700 }}>{options.secondQuestionTitle}</Text>
+            <Spacer height={40} />
+            <Grid items={options.secondQuestionOptions} callback={onSelect} mods={{ idkey: 'value', iconSize: 60, labelSize: 25 }} />
           </React.Fragment>
         )}
-      </Container>
+      </Wrapper>
     </React.Fragment>
   );
 };
 
+/* * */
 export default SecondQuestion;
